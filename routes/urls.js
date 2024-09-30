@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     url: req.body.url
   };
   console.log("Adding document to DB", document);
-  const result = upserter.upsertRoute(route, url);
+  const result = upserter.upsertRoute(document.route, document.url);
   console.log(result);
   res.send(result).status(200);
 });
