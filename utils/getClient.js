@@ -9,7 +9,7 @@ module.exports.getClient = async () => {
     const client = new Client({
         user: process.env.DB_USER,
         host: process.env.DB_SERVER,
-        database: "routes",
+        database: "urls",
         password: process.env.DB_PASSWORD,
         port: 5432, // default port for PostgreSQL
     });
