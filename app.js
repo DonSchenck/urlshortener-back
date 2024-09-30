@@ -25,16 +25,11 @@ const { getClient } = require('./utils/getClient');
 
 // "route" is the shortened URL; "url" is the long (where it goes) URL
 (async () => {
+  console.log('table will be created now...');
   const client = getClient();
-  let createTableQuery = `
-    CREATE TABLE IF NOT EXISTS routes(
-      route STRING PRIMARY KEY NOT NULL ,
-      url varchar,
-      date TIMESTAMP NOT NULL DEFAULT current_timestamp
-    );
-  `;
+  let createTableQuery = 'CREATE TABLE IF NOT EXISTS routes (route STRING PRIMARY KEY NOT NULL, url varchar, date TIMESTAMP NOT NULL DEFAULT current_timestamp)';
   const res = await client.query(createTableQuery);
-  console.log(`Created table.`);
+  console.log('Created table.');
   await client.end();
 });
 // END
