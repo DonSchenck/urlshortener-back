@@ -38,17 +38,21 @@ app.use(function(err, req, res, next) {
 });
 
 console.log('BEGIN BUILD TABLE');
+buildtable();
 
-// BEGIN The following section of code will create the database table IF NECESSARY
-const { getClient } = require('./utils/getClient');
-const c = getClient();
+async function buildtable() {
+  // BEGIN The following section of code will create the database table IF NECESSARY
+  const { getClient } = require('./utils/getClient');
 
-// "route" is the shortened URL; "url" is the long (where it goes) URL
-console.log('table will be created now...');
-const client = getClient();
-let createTableQuery = 'CREATE TABLE IF NOT EXISTS routes (route STRING PRIMARY KEY NOT NULL, url varchar, date TIMESTAMP NOT NULL DEFAULT current_timestamp)';
-const res = client.query(createTableQuery);
-console.log('Created table.');
-// END
+  // "route" is the shortened URL; "url" is the long (where it goes) URL
+  console.log('table will be created now...');
+  //const client = getClient();
+  const client = await getClient();
+  const createTableQuery = `CREATE TABLE IF NOT EXISTS routes (route varchar PRIMARY KEY NOT NULL, url varchar, date TIMESTAMP NOT NULL DEFAULT current_timestamp)`;
+
+  const res = await client.query(createTableQuery);
+  console.log('Created table.');
+  // END
+};
 
 module.exports = app;
