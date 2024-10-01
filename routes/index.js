@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const { getClient } = require("../utils/getClient");
+const { Client } = require("../utils/getClient");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -10,7 +10,7 @@ router.get("/", function(req, res, next) {
 
 router.get("/health", async (req, res) => {
   let dbStatus = false;
-  const client = await getClient();
+  const client = await Client();
   console.log("Testing database connection");
   await client.connect().then(() => {
     console.log("Connected");
