@@ -1,6 +1,6 @@
 const { Client } = require("./getClient");
 
-module.exports.getAllRoutes = async() => {
+module.exports.AllRoutes = async() => {
   const client = await Client();
   const allroutes = await client.query('SELECT route, url FROM routes ORDER BY route');
   console.log("Getting all routes...");

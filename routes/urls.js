@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-const getter = require('../utils/read-all-routes');
+const { AllRoutes } = require('../utils/read-all-routes');
 const upserter = require('../utils/upsert-route');
 
 router.get('/', async (req, res) => {
 
-  const routes = getter.getAllRoutes();
+  const routes = AllRoutes.getAllRoutes();
   res.send(routes.rows).status(200);;
 });
 
