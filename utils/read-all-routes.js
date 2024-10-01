@@ -6,5 +6,6 @@ module.exports.getAllRoutes = async() => {
   console.log("Getting all routes...");
   console.log(allroutes);
   await client.end();
+  await getClient.end();
   return allroutes;
 };
