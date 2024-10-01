@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 require('dotenv').config();
 
-module.exports.getClient = async () => {
+module.exports.Client = async () => {
 
     console.log('  DB_USER: ' + process.env.DB_USER);
     console.log('DB_SERVER: ' + process.env.DB_SERVER);

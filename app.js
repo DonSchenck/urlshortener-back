@@ -42,12 +42,12 @@ buildtable();
 
 async function buildtable() {
   // BEGIN The following section of code will create the database table IF NECESSARY
-  const { getClient } = require('./utils/getClient');
+  const { Client } = require('./utils/getClient');
 
   // "route" is the shortened URL; "url" is the long (where it goes) URL
   console.log('table will be created now...');
   //const client = getClient();
-  const client = await getClient();
+  const client = await Client();
   const createTableQuery = `CREATE TABLE IF NOT EXISTS routes (route varchar PRIMARY KEY NOT NULL, url varchar, date TIMESTAMP NOT NULL DEFAULT current_timestamp)`;
 
   const res = await client.query(createTableQuery);
