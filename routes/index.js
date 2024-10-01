@@ -15,6 +15,7 @@ router.get("/health", async (req, res) => {
   await client.connect().then(() => {
     console.log("Connected");
     dbStatus = true;
+    client.end();
   }).catch(e => {
     console.log("Failed to connect");
     console.log(e);
