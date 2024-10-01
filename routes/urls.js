@@ -7,7 +7,7 @@ const upserter = require('../utils/upsert-route');
 router.get('/', async (req, res) => {
 
   const routes = getter.getAllRoutes();
-  res.send(routes).status(200);;
+  res.send(routes.rows).status(200);;
 });
 
 router.post("/", async (req, res) => {
