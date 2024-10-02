@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+const { Client } = require('../utils/getClient');
 const upserter = require('../utils/upsert-route');
 
 router.get('/', async (req, res) => {
