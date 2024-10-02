@@ -28,6 +28,7 @@ async function getRows() {
   const client = await Client();
   try {
     const res = await client.query(`SELECT route, url FROM routes ORDER BY route`);
+    console.log(res.rows);
     return res.rows; // returns an array of rows
   } catch (err) {
     console.error('Error executing query', err.stack);
