@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const { AllRoutes } = require('../utils/read-all-routes');
 const upserter = require('../utils/upsert-route');
 
 router.get('/', async (req, res) => {
 
-  const routes = AllRoutes.AllRoutes();
+  const routes = getRows();
   res.send(routes.rows).status(200);;
 });
 
@@ -22,3 +21,16 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
+// Function to get rows
+async function getRows() {
+  const client = await Client.connect();
+  try {
+    const res = await client.query(`SELECT route, url FROM routes ORDER BY route`);
+    return res.rows; // returns an array of rows
+  } catch (err) {
+    console.error('Error executing query', err.stack);
+  } finally {
+    client.release();
+  }
+}
