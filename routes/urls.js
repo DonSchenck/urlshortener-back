@@ -25,7 +25,7 @@ module.exports = router;
 
 // Function to get rows
 async function getRows() {
-  const client = await Client.connect();
+  const client = await Client();
   try {
     const res = await client.query(`SELECT route, url FROM routes ORDER BY route`);
     return res.rows; // returns an array of rows
