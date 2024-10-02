@@ -32,6 +32,6 @@ async function getRows() {
   } catch (err) {
     console.error('Error executing query', err.stack);
   } finally {
-    client.release();
+    await client.end();
   }
 }
