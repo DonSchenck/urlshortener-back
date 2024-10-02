@@ -6,7 +6,6 @@ module.exports.upsertRoute = async(route, url) => {
 
   console.log("upsertCmd: " + upsertCmd);
 
-  // let insertRow = await client.query(upsertCmd);
-  // console.log(`Upserted ${insertRow.rowCount} row`);
+  let insertRow = await client.query(upsertCmd);
   await client.end();
 };
