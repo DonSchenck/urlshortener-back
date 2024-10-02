@@ -5,7 +5,7 @@ const { Client } = require('../utils/getClient');
 const upserter = require('../utils/upsert-route');
 
 router.get('/', async (req, res) => {
-  res.send(getRows()).status(200);;
+  res.send(await getRows()).status(200);;
 });
 
 router.post("/", async (req, res) => {
