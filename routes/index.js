@@ -10,12 +10,11 @@ router.get("/", function(req, res, next) {
 
 router.get("/health", async (req, res) => {
   let dbStatus = false;
-  const client = await Client();
   console.log("Testing database connection");
-  await client.connect().then(() => {
+  await Client().then(() => {
     console.log("Connected");
     dbStatus = true;
-    client.end();
+    // client.end();
   }).catch(e => {
     console.log("Failed to connect");
     console.log(e);
